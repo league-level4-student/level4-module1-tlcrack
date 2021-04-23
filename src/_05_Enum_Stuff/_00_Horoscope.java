@@ -50,7 +50,7 @@ public class _00_Horoscope {
 	}
 	// 3. Make a main method to test your method
 	public static void main(String[] args) {
-		_00_Horoscope h = new _00_Horoscope();
+		Zodiac h = new Zodiac();
 		scopeOfTheDay(h);
 	}
 }

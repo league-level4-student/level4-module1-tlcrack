@@ -8,8 +8,9 @@ public class _00_Horoscope {
 	
 	// 2. Write a method that takes in a Zodiac enum object and uses a JOPtionPane to display
 	//    a different horoscope based on the Zodiac's state.
-	void scopeOfTheDay(Zodiac sign) {
+	static void scopeOfTheDay(Zodiac sign) {
 		switch(sign) {
+		
 		case ARIES:
 			JOptionPane.showMessageDialog(null, "Expect ups and downs in your future. You will see trees today.");
 		break;
@@ -46,11 +47,15 @@ public class _00_Horoscope {
 		case PISCES:
 			JOptionPane.showMessageDialog(null, "Fish! Very good. *clap clap* Also, check the obituaries soon. Someone important will die today.");
 		break;
+		default:
+			JOptionPane.showMessageDialog(null, "Are you sure you were born on Earth?");
+		break;
 		}
 	}
 	// 3. Make a main method to test your method
 	public static void main(String[] args) {
-		Zodiac h = new Zodiac();
+		
+		Zodiac h = Zodiac.GEMINI;
 		scopeOfTheDay(h);
 	}
 }

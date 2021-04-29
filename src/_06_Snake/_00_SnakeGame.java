@@ -85,8 +85,19 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//2. Use a switch statement to determine which difficulty was chosen.
 		//   Use timer.setDelay(delay) with different numbers to change the speed
 		//   of the game. The smaller the number, the faster it goes.
-
+		switch(choice) {
+		case"Expert":
+			timer.setDelay(5);
+		break;
+		case"Moderate":
+			timer.setDelay(10);
+		break;
+		case"Beginner":
+			timer.setDelay(20);
+		break;
+		}
 		//3. start the timer
+		timer.start();
 	}
 
 	public static void main(String[] args) {
@@ -103,7 +114,27 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		//1. Use a switch statement on e.getKeyCode()
 		//   to determine which key was pressed.
-		
+		switch(e.getKeyCode()) {
+		case(KeyEvent.VK_UP):
+		case(KeyEvent.VK_W):
+			snake.setDirection(Direction.UP);
+		break;
+		case(KeyEvent.VK_LEFT):
+		case(KeyEvent.VK_A):
+			snake.setDirection(Direction.UP);
+		break;
+		case(KeyEvent.VK_DOWN):
+		case(KeyEvent.VK_S):
+			snake.setDirection(Direction.UP);
+		break;
+		case(KeyEvent.VK_RIGHT):
+		case(KeyEvent.VK_D):
+			snake.setDirection(Direction.UP);
+		break;
+		case(KeyEvent.VK_SPACE):
+			snake.feed();
+		break;
+		}
 		// if an arrow key is pressed, set the snake's 
 		// direction accordingly
 		
@@ -113,24 +144,31 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	private void setFoodLocation() {
 		//1. Create a new Location object that is set to a random location
+		Location foodSpawn;
+		Random r = new Random();
 		
+		foodSpawn = new Location(r.nextInt(WIDTH), r.nextInt(HEIGHT));
 		//2. set the foodLocation variable equal to the Location object you just created.
 		//   use the snake's isLocationOnSnake method to make sure you don't put the food on the snake
-		
+		if(snake.isLocationOnSnake(foodSpawn)==false) {
+			foodLocation = foodSpawn;
+		}
 	}
 
 	private void gameOver() {
 		
 		//1. stop the timer
-		
+		timer.stop();
 		//2. tell the user their snake is dead
-		
+		JOptionPane.showMessageDialog(null, "Your snake has died.");
 		//3. ask them if they want to play again.
-		
+		String again = JOptionPane.showInputDialog("Would you like to play again?");
 		//4. if they want to play again
 		//   reset the snake and the food and start the timer
 		//   else, exit the game
-		
+		if(again.equalsIgnoreCase("yes")) {
+			
+		}
 	}
 
 	@Override

@@ -61,7 +61,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		panel.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 		window.add(panel);
 
-		timer = new Timer(0, this);
+		timer = new Timer(1000, this);
 
 		window.pack();
 		window.addKeyListener(this);
@@ -134,12 +134,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		case(KeyEvent.VK_SPACE):
 			snake.feed();
 		break;
-		}
+		
 		// if an arrow key is pressed, set the snake's 
 		// direction accordingly
 		
 		// if the space key is pressed, call the snake's feed method
 		
+		}
 	}
 
 	private void setFoodLocation() {
@@ -167,7 +168,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//   reset the snake and the food and start the timer
 		//   else, exit the game
 		if(again.equalsIgnoreCase("yes")) {
-			
+			snake.reset(new Location(WIDTH / 2, HEIGHT / 2));
 		}
 	}
 
@@ -179,13 +180,19 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//1. update the snake
-
+		snake.update();
 		//2. if the snake is colliding with its own body 
 		//   or if the snake is out of bounds, call gameOver
-
+		if(snake.isHeadCollidingWithBody()||snake.isOutOfBounds()) {
+			gameOver();
+		}
 		//3. if the location of the head is equal to the location of the food,
 		// 	 feed the snake and set the food location
-
+		if(snake.getHeadLocation()==foodLocation) {
+		snake.feed();
+		setFoodLocation();
+		}
 		//4. call panel.repaint();
+		panel.repaint();
 	}
 }

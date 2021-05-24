@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 public class SnakeSegment {
 	private Location location;
-	private int size;
+	public int size;
 
 	public SnakeSegment(Location loc, int size) {
 		this.location = loc;
